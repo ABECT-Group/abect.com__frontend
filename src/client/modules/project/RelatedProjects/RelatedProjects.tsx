@@ -21,18 +21,20 @@ export default function RelatedProjects({ projects, locale }: RelatedProjectsPro
 
 	return (
 		<section className="related-projects">
-			<header className="related-projects__header">
-				<h2 className="related-projects__title">{t('title')}</h2>
-				<p className="related-projects__subtitle">{t('subtitle')}</p>
-			</header>
+			<div className="container">
+				<header className="related-projects__header">
+					<h2 className="related-projects__title">{t('title')}</h2>
+					<p className="related-projects__subtitle">{t('subtitle')}</p>
+				</header>
 
-			<PortfolioList projects={projects} locale={locale} startRows={3} />
+				<PortfolioList projects={projects} locale={locale} startRows={3} />
 
-			<footer className="related-projects__footer">
-				<Link href="/portfolio" className="cta cta-secondary">
-					{t('viewAll')}
-				</Link>
-			</footer>
+				<footer className="related-projects__footer">
+					<Link href="/portfolio" className="cta cta-secondary">
+						{t('viewAll')}
+					</Link>
+				</footer>
+			</div>
 		</section>
 	);
 }

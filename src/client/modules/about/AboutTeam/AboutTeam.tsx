@@ -14,7 +14,7 @@ export default function AboutTeam(): JSX.Element {
 			position: t('team.member1.position'),
 			description: t('team.member1.description'),
 			tags: ['Node.js', 'React', 'MongoDB', 'Next.js', 'FinTech APIs'],
-			image: '/ex.webp',
+			image: '/images/team/team1.webp',
 			isFounder: true
 		},
 		{
@@ -22,15 +22,7 @@ export default function AboutTeam(): JSX.Element {
 			position: t('team.member2.position'),
 			description: t('team.member2.description'),
 			tags: ['Figma', 'UI/UX', 'Prototyping', 'Web Design'],
-			image: '/ex.webp',
-			isFounder: false
-		},
-		{
-			name: t('team.member3.name'),
-			position: t('team.member3.position'),
-			description: t('team.member3.description'),
-			tags: ['Social Media', 'Content Strategy', 'Analytics', 'Automation'],
-			image: '/ex.webp',
+			image: '/images/team/team2.webp',
 			isFounder: false
 		},
 		{
@@ -38,7 +30,15 @@ export default function AboutTeam(): JSX.Element {
 			position: t('team.member4.position'),
 			description: t('team.member4.description'),
 			tags: ['Project Management', 'Client Relations', 'Agile', 'Coordination'],
-			image: '/ex.webp',
+			image: '/images/team/team3.webp',
+			isFounder: false
+		},
+		{
+			name: t('team.member3.name'),
+			position: t('team.member3.position'),
+			description: t('team.member3.description'),
+			tags: ['Social Media', 'Content Strategy', 'Analytics', 'Automation'],
+			image: '/images/team/team4.webp',
 			isFounder: false
 		}
 	];

@@ -207,10 +207,8 @@
         width: 100%;
         margin: 32px 0;
         border-collapse: collapse;
-        border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 4px 16px var(--shadow-dark);
-        background: var(--backLight);
 
         thead {
             background: var(--accent-alpha-10);
@@ -230,10 +228,6 @@
 
                 &:last-child {
                     border-bottom: none;
-                }
-
-                &:hover {
-                    background: var(--accent-alpha-05);
                 }
             }
 
