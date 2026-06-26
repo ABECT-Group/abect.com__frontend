@@ -10,7 +10,6 @@ export default function PriceDisplay(): JSX.Element {
   const { state } = useCalculator();
   const [displayPrice, setDisplayPrice] = useState(0);
 
-  // Animate price change
   useEffect(() => {
     if (state.estimatedPrice === displayPrice) return;
 
@@ -23,7 +22,6 @@ export default function PriceDisplay(): JSX.Element {
     const interval = setInterval(() => {
       step++;
       current += stepValue;
-
       if (step >= steps) {
         setDisplayPrice(state.estimatedPrice);
         clearInterval(interval);
@@ -35,22 +33,24 @@ export default function PriceDisplay(): JSX.Element {
     return () => clearInterval(interval);
   }, [state.estimatedPrice, displayPrice]);
 
-  const showPrice = state.projectType && state.platform;
+  const showPrice = !!(state.projectType && state.platform);
 
   return (
     <div className={`calculator-price ${showPrice ? 'calculator-price--visible' : ''}`}>
-      <div className="calculator-price__content">
-        <div className="calculator-price__label">{t('priceLabel')}</div>
-        <div className="calculator-price__value">
-          {state.config?.generalSettings.showPriceFrom && (
-            <span className="calculator-price__from">{t('priceFrom')}</span>
-          )}
-          <span className="calculator-price__amount">
-            {displayPrice.toLocaleString('uk-UA')}
-          </span>
-          <span className="calculator-price__currency">
-            {state.config?.generalSettings.currency || t('currency')}
-          </span>
+      <div className="calculator-price__inner">
+        <div>
+          <div className="calculator-price__label">{t('priceLabel')}</div>
+          <div className="calculator-price__value">
+            {state.config?.generalSettings.showPriceFrom && (
+              <span className="calculator-price__from">{t('priceFrom')}</span>
+            )}
+            <span className="calculator-price__amount">
+              {displayPrice.toLocaleString('uk-UA')}
+            </span>
+            <span className="calculator-price__currency">
+              {state.config?.generalSettings.currency || t('currency')}
+            </span>
+          </div>
         </div>
         {state.estimatedTimeline && (
           <div className="calculator-price__timeline">

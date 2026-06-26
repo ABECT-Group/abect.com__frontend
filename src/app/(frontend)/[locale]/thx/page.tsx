@@ -5,18 +5,20 @@ import type { Metadata } from 'next';
 
 type Params = {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ form?: string; timestamp?: string }>;
+  searchParams: Promise<{ form?: string; token?: string }>;
 };
 
 const VALID_FORMS = ['simple', 'calculator'] as const;
-const MAX_AGE_MS = 5 * 60 * 1000;
+const MAX_AGE_MS = 10 * 60 * 1000;
+const TOKEN_RE = /^(\d{13})-[a-z0-9]{9}$/;
 
-function isValidTimestamp(ts: string): boolean {
-  const num = parseInt(ts, 10);
-  if (isNaN(num)) return false;
+function isValidToken(token: string): boolean {
+  const match = TOKEN_RE.exec(token);
+  if (!match) return false;
+  const ts = parseInt(match[1], 10);
   const now = Date.now();
-  if (num > now) return false;
-  if (now - num > MAX_AGE_MS) return false;
+  if (ts > now) return false;
+  if (now - ts > MAX_AGE_MS) return false;
   return true;
 }
 
@@ -33,7 +35,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function ThxServerPage({ params, searchParams }: Params) {
   const { locale } = await params;
-  const { form, timestamp } = await searchParams;
+  const { form, token } = await searchParams;
 
   setRequestLocale(locale);
 
@@ -42,8 +44,8 @@ export default async function ThxServerPage({ params, searchParams }: Params) {
   if (
     !form ||
     !VALID_FORMS.includes(form as (typeof VALID_FORMS)[number]) ||
-    !timestamp ||
-    !isValidTimestamp(timestamp)
+    !token ||
+    !isValidToken(token)
   ) {
     redirect(homeUrl);
   }

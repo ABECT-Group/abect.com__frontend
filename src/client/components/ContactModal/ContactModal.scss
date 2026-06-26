@@ -14,6 +14,7 @@
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -26,7 +27,7 @@
     max-height: 90vh;
     overflow-y: auto;
     padding: var(--spacing-xl);
-    background: var(--color-surface);
+    background: var(--color-background);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
     animation: slideUp 0.3s ease-out;
@@ -36,6 +37,7 @@
         opacity: 0;
         transform: translateY(20px) scale(0.95);
       }
+
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -167,6 +169,7 @@
     }
 
     &--error {
+
       input,
       textarea {
         border-color: #ef4444;
@@ -204,6 +207,7 @@
       from {
         transform: rotate(0deg);
       }
+
       to {
         transform: rotate(360deg);
       }
@@ -262,6 +266,7 @@
           opacity: 0;
           transform: scale(0.5);
         }
+
         to {
           opacity: 1;
           transform: scale(1);

@@ -53,13 +53,14 @@ export default async function Portfolio({ locale }: PortfolioProps): Promise<JSX
 					>
 						{t('viewAllButton')}
 					</Link>
-					<Link
-						href={`/#contacts`}
+					<button
+						type="button"
+						data-open-modal
 						className="cta cta-secondary"
 						aria-label={t('orderButton')}
 					>
 						{t('orderButton')}
-					</Link>
+					</button>
 				</footer>
 			</div>
 		</section>

@@ -53,7 +53,7 @@ export default function PricingComparison({ service, locale }: PricingComparison
 							</div>
 
 							<div className="pricing-comparison__card-footer">
-								<button type="button" className="cta cta-secondary">
+								<button type="button" data-open-modal className="cta cta-secondary">
 									{t('orderWeblium')}
 								</button>
 							</div>

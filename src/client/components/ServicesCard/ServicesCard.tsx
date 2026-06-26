@@ -116,7 +116,7 @@ export default function ServicesCard({ service, locale }: ServicesCardProps): JS
 					<p className="service-card__description" itemProp="description">
 						{currentDescription}.{" "}
 						<span className="service-card__timeline">
-							{locale === 'uk' ? 'Терміни' : 'Timeline'}: {currentTimeline}
+							{locale === 'ua' ? 'Терміни' : 'Timeline'}: {currentTimeline}
 						</span>
 					</p>
 
@@ -155,10 +155,11 @@ export default function ServicesCard({ service, locale }: ServicesCardProps): JS
 
 					<button
 						type="button"
+						data-open-modal
 						className="service-card__btn"
-						aria-label={`Order ${service.title}`}
+						aria-label={locale === 'ua' ? `Замовити ${service.title}` : `Order ${service.title}`}
 					>
-						{locale === 'uk' ? 'Замовити' : 'Order'}
+						{locale === 'ua' ? 'Замовити' : 'Order'}
 					</button>
 				</div>
 			</div>

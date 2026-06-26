@@ -25,22 +25,22 @@ export default function ContactStep(): JSX.Element {
       {/* Summary */}
       <div className="calculator-step__summary">
         <div className="calculator-step__summary-row">
-          <span>Тип проекту:</span>
+          <span>{t('summaryProjectType')}:</span>
           <strong>
             {state.config?.projectTypes.find((p) => p.slug === state.projectType)?.name || '-'}
           </strong>
         </div>
         <div className="calculator-step__summary-row">
-          <span>Платформа:</span>
+          <span>{t('summaryPlatform')}:</span>
           <strong>{state.platform === 'weblium' ? 'Weblium' : 'Custom'}</strong>
         </div>
         <div className="calculator-step__summary-row">
-          <span>Сторінок:</span>
+          <span>{t('summaryPages')}:</span>
           <strong>{state.pagesCount}</strong>
         </div>
         {state.additionalServices.length > 0 && (
           <div className="calculator-step__summary-row">
-            <span>Додатково:</span>
+            <span>{t('summaryAddons')}:</span>
             <strong>
               {state.additionalServices
                 .map(
@@ -52,14 +52,14 @@ export default function ContactStep(): JSX.Element {
           </div>
         )}
         <div className="calculator-step__summary-row">
-          <span>Терміни:</span>
+          <span>{t('summaryTimeline')}:</span>
           <strong>
             {state.config?.urgencyOptions.find((u) => u.slug === state.urgency)?.name || '-'}
           </strong>
         </div>
         <div className="calculator-step__summary-row calculator-step__summary-row--total">
-          <span>Орієнтовна вартість:</span>
-          <strong>від {state.estimatedPrice.toLocaleString('uk-UA')} грн</strong>
+          <span>{t('summaryPrice')}:</span>
+          <strong>{t('summaryPriceFrom')} {state.estimatedPrice.toLocaleString('uk-UA')} {state.config?.generalSettings.currency || 'грн'}</strong>
         </div>
       </div>
 

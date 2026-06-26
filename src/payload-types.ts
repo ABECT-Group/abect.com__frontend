@@ -153,10 +153,6 @@ export interface Service {
    */
   shortDescription: string;
   /**
-   * Іконка для картки послуги
-   */
-  icon?: (string | null) | Media;
-  /**
    * Головне зображення для сторінки послуги
    */
   heroImage?: (string | null) | Media;
@@ -231,56 +227,6 @@ export interface Service {
     [k: string]: unknown;
   };
   /**
-   * Детальний список що входить в послугу
-   */
-  whatIncluded?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  process?:
-    | {
-        /**
-         * Наприклад: "01", "02"
-         */
-        stepNumber?: string | null;
-        /**
-         * Наприклад: "Аналіз і планування"
-         */
-        stepTitle?: string | null;
-        stepDescription?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Порівняння Weblium vs Custom
-   */
-  comparisonTable?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  /**
    * Проекти з портфоліо для цієї послуги
    */
   relatedPortfolioProjects?: (string | Portfolio)[] | null;
@@ -309,34 +255,10 @@ export interface Service {
         id?: string | null;
       }[]
     | null;
-  /**
-   * Технології які використовуються в послузі
-   */
-  technologies?:
-    | {
-        tech?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  benefits?:
-    | {
-        title?: string | null;
-        description?: string | null;
-        /**
-         * Назва іконки або emoji
-         */
-        icon?: string | null;
-        id?: string | null;
-      }[]
-    | null;
   seo: {
     metaTitle: string;
     metaDescription: string;
     metaKeywords: string;
-    /**
-     * Зображення для соціальних мереж
-     */
-    ogImage?: (string | null) | Media;
   };
   /**
    * Лічильник переглядів сторінки послуги
@@ -398,18 +320,6 @@ export interface ServiceType {
    * Опис для сторінки /services/[type]
    */
   description: string;
-  /**
-   * Іконка для відображення в фільтрі
-   */
-  icon?: (string | null) | Media;
-  /**
-   * Зображення для OG та заголовка сторінки
-   */
-  cover?: (string | null) | Media;
-  /**
-   * Акцентний колір для категорії, наприклад: #3B82F6
-   */
-  color?: string | null;
   /**
    * Порядок відображення в фільтрі (менше число = вище)
    */
@@ -588,11 +498,6 @@ export interface Category {
    */
   slug: string;
   description: string;
-  /**
-   * Наприклад: #3B82F6
-   */
-  color?: string | null;
-  cover?: (string | null) | Media;
   seo: {
     metaTitle: string;
     metaDescription: string;
@@ -772,7 +677,6 @@ export interface ServicesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   shortDescription?: T;
-  icon?: T;
   heroImage?: T;
   serviceType?: T;
   order?: T;
@@ -799,16 +703,6 @@ export interface ServicesSelect<T extends boolean = true> {
       };
   customDescription?: T;
   detailedDescription?: T;
-  whatIncluded?: T;
-  process?:
-    | T
-    | {
-        stepNumber?: T;
-        stepTitle?: T;
-        stepDescription?: T;
-        id?: T;
-      };
-  comparisonTable?: T;
   relatedPortfolioProjects?: T;
   relatedServices?: T;
   faq?:
@@ -818,27 +712,12 @@ export interface ServicesSelect<T extends boolean = true> {
         answer?: T;
         id?: T;
       };
-  technologies?:
-    | T
-    | {
-        tech?: T;
-        id?: T;
-      };
-  benefits?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        icon?: T;
-        id?: T;
-      };
   seo?:
     | T
     | {
         metaTitle?: T;
         metaDescription?: T;
         metaKeywords?: T;
-        ogImage?: T;
       };
   viewCount?: T;
   status?: T;
@@ -854,9 +733,6 @@ export interface ServiceTypesSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   description?: T;
-  icon?: T;
-  cover?: T;
-  color?: T;
   order?: T;
   seo?:
     | T

@@ -1,149 +1,142 @@
 .option-card {
   display: flex;
   align-items: flex-start;
-  gap: var(--spacing-md);
+  gap: 14px;
   width: 100%;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: 14px 18px;
   text-align: left;
-  background: var(--color-surface-alt);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover:not(:disabled) {
-    border-color: var(--color-primary);
-    background: var(--color-surface);
+    border-color: rgba(55, 93, 251, 0.5);
+    background: var(--accent-alpha-10);
   }
 
   &--selected {
-    border-color: var(--color-primary);
-    background: rgba(var(--color-primary-rgb), 0.05);
+    border-color: var(--accent);
+    background: var(--accent-alpha-10);
 
     .option-card__radio {
-      border-color: var(--color-primary);
+      border-color: var(--accent);
     }
 
     .option-card__checkbox {
-      background: var(--color-primary);
-      border-color: var(--color-primary);
+      background: var(--accent);
+      border-color: var(--accent);
     }
   }
 
   &--disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
   }
 
-  // Radio indicator
   &__radio {
     flex-shrink: 0;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     margin-top: 2px;
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-full);
+    border: 2px solid var(--border-subtle);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
 
     &-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--color-primary);
-      border-radius: var(--radius-full);
-      animation: scaleIn 0.2s ease;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: opt-scale-in 0.2s ease;
 
-      @keyframes scaleIn {
-        from {
-          transform: scale(0);
-        }
-        to {
-          transform: scale(1);
-        }
+      @keyframes opt-scale-in {
+        from { transform: scale(0); }
+        to { transform: scale(1); }
       }
     }
   }
 
-  // Checkbox indicator
   &__checkbox {
     flex-shrink: 0;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     margin-top: 2px;
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-sm);
+    border: 2px solid var(--border-subtle);
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    color: white;
+    color: var(--white);
   }
 
-  // Icon
   &__icon {
     flex-shrink: 0;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-surface);
-    border-radius: var(--radius-md);
-    color: var(--color-primary);
+    background: var(--accent-alpha-10);
+    border-radius: 10px;
+    color: var(--accent);
 
     svg {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
     }
   }
 
-  // Content
   &__content {
     flex: 1;
     min-width: 0;
   }
 
   &__title {
-    font-size: var(--font-size-base);
+    font-size: 15px;
     font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-xs);
+    color: var(--white);
+    margin-bottom: 2px;
   }
 
   &__description {
-    font-size: var(--font-size-sm);
+    font-size: 13px;
     color: var(--color-text-secondary);
     line-height: 1.5;
   }
 
   &__price {
-    margin-top: var(--spacing-sm);
-    font-size: var(--font-size-sm);
+    margin-top: 6px;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--accent);
   }
 
-  // Large variant
   &--large {
     position: relative;
     flex-direction: column;
-    padding: var(--spacing-xl);
+    align-items: center;
+    padding: 24px 20px;
     text-align: center;
+    gap: 0;
 
     .option-card__radio {
       display: none;
     }
 
     .option-card__icon {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto var(--spacing-md);
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 14px;
 
       svg {
-        width: 36px;
-        height: 36px;
+        width: 30px;
+        height: 30px;
       }
     }
 
@@ -152,26 +145,25 @@
     }
 
     .option-card__title {
-      font-size: var(--font-size-lg);
+      font-size: 16px;
     }
 
     .option-card__check {
       position: absolute;
-      top: var(--spacing-md);
-      right: var(--spacing-md);
-      width: 32px;
-      height: 32px;
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--color-primary);
-      color: white;
-      border-radius: var(--radius-full);
-      animation: scaleIn 0.2s ease;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50%;
+      animation: opt-scale-in 0.2s ease;
     }
   }
 
-  // Checkbox variant
   &--checkbox {
     .option-card__radio {
       display: none;

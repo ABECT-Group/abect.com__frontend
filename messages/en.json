@@ -538,6 +538,7 @@
 		}
 	},
 	"Calculator": {
+		"badge": "Cost Estimate",
 		"title": "Cost Calculator",
 		"subtitle": "Calculate the approximate cost of your project in a few steps",
 		"step": "Step",
@@ -545,6 +546,7 @@
 		"nextButton": "Next",
 		"backButton": "Back",
 		"submitButton": "Get Quote",
+		"loadingButton": "Submitting...",
 		"resetButton": "Start Over",
 		"priceLabel": "Estimated Cost",
 		"priceFrom": "from",
@@ -582,7 +584,14 @@
 			},
 			"contact": {
 				"title": "How can we contact you?",
-				"subtitle": "Leave your contacts to receive a detailed quote"
+				"subtitle": "Leave your contacts to receive a detailed quote",
+				"summaryProjectType": "Project Type",
+				"summaryPlatform": "Platform",
+				"summaryPages": "Pages",
+				"summaryAddons": "Add-ons",
+				"summaryTimeline": "Timeline",
+				"summaryPrice": "Estimated Cost",
+				"summaryPriceFrom": "from"
 			}
 		},
 		"seo": {
@@ -598,6 +607,21 @@
 		"subtitleCalculator": "Quote received! Our manager will contact you to clarify the project details.",
 		"home": "Go home",
 		"services": "Our services",
+		"stepsTitle": "What happens next?",
+		"steps": [
+			{
+				"title": "Request Review",
+				"description": "We will review your request and prepare a response"
+			},
+			{
+				"title": "We Contact You",
+				"description": "Our manager will reach out within 1 business day"
+			},
+			{
+				"title": "Project Kickoff",
+				"description": "We'll discuss details, sign the agreement and get started"
+			}
+		],
 		"seo": {
 			"title": "Thank you for your request | ABECT",
 			"description": "Your request has been successfully submitted. We will contact you shortly."

@@ -42,20 +42,6 @@ export const Categories: CollectionConfig = {
       required: true,
       localized: true
     },
-    {
-      name: 'color',
-      type: 'text',
-      label: 'Колір (hex)',
-      admin: {
-        description: 'Наприклад: #3B82F6',
-      },
-    },
-    {
-      name: 'cover',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Обкладинка категорії',
-    },
     // SEO Fields
     {
       name: 'seo',

@@ -27,7 +27,6 @@ function CalculatorContent({ config }: CalculatorContentProps): JSX.Element {
   const router = useRouter();
   const { state, dispatch, reset } = useCalculator();
 
-  // Submit handler
   const handleSubmit = async () => {
     dispatch({ type: 'SET_SUBMITTING', payload: true });
     dispatch({ type: 'SET_SUBMIT_ERROR', payload: null });
@@ -55,80 +54,68 @@ function CalculatorContent({ config }: CalculatorContentProps): JSX.Element {
       });
 
       if (result.success) {
-        router.push(`/thx?form=calculator&timestamp=${Date.now()}`);
+        const token = `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+        router.push(`/thx?form=calculator&token=${token}`);
       } else {
         dispatch({ type: 'SET_SUBMIT_ERROR', payload: result.error || tForm('errorMessage') });
       }
-    } catch (error) {
+    } catch {
       dispatch({ type: 'SET_SUBMIT_ERROR', payload: tForm('errorMessage') });
     } finally {
       dispatch({ type: 'SET_SUBMITTING', payload: false });
     }
   };
 
-  // Render current step
   const renderStep = () => {
     switch (state.currentStep) {
-      case 0:
-        return <ProjectTypeStep />;
-      case 1:
-        return <PlatformStep />;
-      case 2:
-        return <PagesStep />;
-      case 3:
-        return <AddonsStep />;
-      case 4:
-        return <UrgencyStep />;
-      case 5:
-        return <ContactStep />;
-      default:
-        return null;
+      case 0: return <ProjectTypeStep />;
+      case 1: return <PlatformStep />;
+      case 2: return <PagesStep />;
+      case 3: return <AddonsStep />;
+      case 4: return <UrgencyStep />;
+      case 5: return <ContactStep />;
+      default: return null;
     }
   };
 
   return (
     <div className="calculator">
-      <div className="calculator__container">
-        {/* Header */}
+      <div className="container">
         <header className="calculator__header">
+          <span className="calculator__badge">{t('badge')}</span>
           <h1 className="calculator__title">{t('title')}</h1>
           <p className="calculator__subtitle">{t('subtitle')}</p>
-
-          {/* Reset button */}
-          {(state.projectType || state.currentStep > 0) && (
-            <button
-              type="button"
-              className="calculator__reset"
-              onClick={reset}
-              aria-label={t('resetButton')}
-            >
-              <RotateCcw size={18} />
-              <span>{t('resetButton')}</span>
-            </button>
-          )}
         </header>
 
-        {/* Progress */}
-        <ProgressBar />
-
-        {/* Error message */}
-        {state.submitError && (
-          <div className="calculator__error">
-            {state.submitError}
+        <div className="calculator__card">
+          <div className="calculator__card-top">
+            <ProgressBar />
+            {(state.projectType || state.currentStep > 0) && (
+              <button
+                type="button"
+                className="calculator__reset"
+                onClick={reset}
+                aria-label={t('resetButton')}
+              >
+                <RotateCcw size={16} />
+                <span>{t('resetButton')}</span>
+              </button>
+            )}
           </div>
-        )}
 
-        {/* Step content */}
-        <div className="calculator__content">
-          {renderStep()}
+          {state.submitError && (
+            <div className="calculator__error">{state.submitError}</div>
+          )}
+
+          <div className="calculator__content">
+            {renderStep()}
+          </div>
+
+          <PriceDisplay />
+
+          <StepNavigation onSubmit={handleSubmit} />
         </div>
-
-        {/* Navigation */}
-        <StepNavigation onSubmit={handleSubmit} />
       </div>
-
-      {/* Price display */}
-      <PriceDisplay />
     </div>
   );
 }

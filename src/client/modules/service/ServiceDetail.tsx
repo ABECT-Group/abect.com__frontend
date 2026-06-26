@@ -31,11 +31,12 @@ function ServiceDetail({ service, relatedServices, locale, serviceType }: Servic
 				<PortfolioShowcase projects={service.relatedPortfolioProjects} locale={locale} />
 			)}
 
+			<RelatedServices services={relatedServices} locale={locale} />
+
 			{service.faq && service.faq.length > 0 && (
 				<FAQSection faq={service.faq} />
 			)}
 
-			<RelatedServices services={relatedServices} locale={locale} />
 		</main>
 	);
 }

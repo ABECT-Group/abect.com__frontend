@@ -141,7 +141,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps): JS
 
     if (result.success) {
       onClose();
-      router.push(`/thx?form=simple&timestamp=${Date.now()}`);
+      const token = `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+      router.push(`/thx?form=simple&token=${token}`);
     } else {
       setFormState('error');
       setErrorMessage(result.error || t('errorMessage'));

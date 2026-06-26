@@ -52,8 +52,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 		};
 	}
 
-	const ogImage = service.seo.ogImage as Media | null;
-	const imageUrl = ogImage?.url || (locale === 'ua' ? 'https://abect.com/seo/service-og.jpg' : 'https://abect.com/seo/en-service-og.jpg');
+	const heroImage = service.heroImage as Media | null;
+	const imageUrl = heroImage?.url || (locale === 'ua' ? 'https://abect.com/seo/og.jpg' : 'https://abect.com/seo/en-og.jpg');
 
 	const fullUrl =
 		locale === 'ua'
@@ -149,7 +149,7 @@ export default async function ServicePage({ params }: Params) {
 						'@type': 'Service',
 						name: service.title,
 						description: service.shortDescription,
-						image: (service.seo.ogImage as Media | null)?.url || (locale === 'ua' ? 'https://abect.com/seo/service-og.jpg' : 'https://abect.com/seo/en-service-og.jpg'),
+						image: (service.heroImage as Media | null)?.url || (locale === 'ua' ? 'https://abect.com/seo/og.jpg' : 'https://abect.com/seo/en-og.jpg'),
 						provider: {
 							'@type': 'Organization',
 							name: 'ABECT',

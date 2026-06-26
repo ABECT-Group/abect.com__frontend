@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { getAllPosts, getAllCategories, getCategoryBySlug, getPostsByCategory } from '@/client/lib/blog';
 import BlogPage from '@/client/modules/blog/BlogPage/BlogPage';
 import type { Metadata } from 'next';
-import type { Media } from '@/payload-types';
 
 export const dynamicParams = true;
 
@@ -46,8 +45,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 	const description = category.seo?.metaDescription || category.description;
 	const keywords = category.seo?.metaKeywords || category.name;
 
-	const coverImage = category.cover as Media | null;
-	const imageUrl = coverImage?.url || (locale === 'ua' ? 'https://abect.com/seo/blog-og.jpg' : 'https://abect.com/seo/en-blog-og.jpg');
+	const imageUrl = locale === 'ua' ? 'https://abect.com/seo/og.jpg' : 'https://abect.com/seo/en-og.jpg';
 
 	const fullUrl =
 		locale === 'ua'

@@ -80,7 +80,7 @@ export default function ServiceHero({ service, locale, serviceType }: ServiceHer
 									>
 										<span className="service-hero__tab-label">Weblium</span>
 										<span className="service-hero__tab-price">
-											{locale === 'uk' ? 'від' : 'from'} {service.webliumPrice} {service.webliumPriceCurrency}
+											{locale === 'ua' ? 'від' : 'from'} {service.webliumPrice} {service.webliumPriceCurrency}
 										</span>
 									</button>
 									<button
@@ -90,7 +90,7 @@ export default function ServiceHero({ service, locale, serviceType }: ServiceHer
 									>
 										<span className="service-hero__tab-label">Custom</span>
 										<span className="service-hero__tab-price">
-											{locale === 'uk' ? 'від' : 'from'} {service.customPrice} {service.customPriceCurrency}
+											{locale === 'ua' ? 'від' : 'from'} {service.customPrice} {service.customPriceCurrency}
 										</span>
 									</button>
 								</div>

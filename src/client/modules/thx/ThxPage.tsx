@@ -14,6 +14,7 @@ export default function ThxPage({ form }: ThxPageProps): JSX.Element {
   const t = useTranslations('ThxPage');
 
   const subtitle = form === 'calculator' ? t('subtitleCalculator') : t('subtitleSimple');
+  const steps = t.raw('steps') as Array<{ title: string; description: string }>;
 
   return (
     <section className="thx-page">
@@ -27,6 +28,21 @@ export default function ThxPage({ form }: ThxPageProps): JSX.Element {
 
           <h1 className="thx-page__title">{t('title')}</h1>
           <p className="thx-page__subtitle">{subtitle}</p>
+
+          <div className="thx-page__steps">
+            <p className="thx-page__steps-title">{t('stepsTitle')}</p>
+            <ol className="thx-page__steps-list">
+              {steps.map((step, i) => (
+                <li key={i} className="thx-page__step">
+                  <span className="thx-page__step-num">{i + 1}</span>
+                  <div className="thx-page__step-body">
+                    <strong className="thx-page__step-title">{step.title}</strong>
+                    <span className="thx-page__step-desc">{step.description}</span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
 
           <div className="thx-page__actions">
             <Link href="/" className="cta">

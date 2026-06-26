@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { getAllServices, getAllServiceTypes, getServiceTypeBySlug, getServicesByType } from '@/client/lib/services';
 import ServicesPage from '@/client/modules/services/ServicesPage/ServicesPage';
 import type { Metadata } from 'next';
-import type { Media } from '@/payload-types';
 
 export const dynamicParams = true;
 
@@ -46,8 +45,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 	const description = serviceType.seo?.metaDescription || serviceType.description;
 	const keywords = serviceType.seo?.metaKeywords || serviceType.name;
 
-	const coverImage = serviceType.cover as Media | null;
-	const imageUrl = coverImage?.url || (locale === 'ua' ? 'https://abect.com/seo/service-og.jpg' : 'https://abect.com/seo/en-service-og.jpg');
+	const imageUrl = locale === 'ua' ? 'https://abect.com/seo/og.jpg' : 'https://abect.com/seo/en-og.jpg';
 
 	const fullUrl =
 		locale === 'ua'

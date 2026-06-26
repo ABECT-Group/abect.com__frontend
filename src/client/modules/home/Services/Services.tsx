@@ -1,6 +1,7 @@
 import { JSX } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { getFeaturedServices } from '@/client/lib/services';
+import { Link } from '@/client/i18n/navigation';
 import ServicesList from '../../../components/ServicesList/ServicesList';
 import './Services.scss';
 
@@ -43,9 +44,9 @@ export default async function Services({ locale }: ServicesProps): Promise<JSX.E
 				{/* Footer CTA */}
 				<footer className="services__footer">
 					<p className="services__footer-text">{t('footerText')}</p>
-					<button type="button" className="cta cta-secondary" aria-label={t('calculateAriaLabel')}>
+					<Link href="/calculator" className="cta cta-secondary" aria-label={t('calculateAriaLabel')}>
 						{t('calculateButton')}
-					</button>
+					</Link>
 				</footer>
 			</div>
 		</section>

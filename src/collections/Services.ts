@@ -52,15 +52,6 @@ export const Services: CollectionConfig = {
       },
     },
     {
-      name: 'icon',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Іконка',
-      admin: {
-        description: 'Іконка для картки послуги',
-      },
-    },
-    {
       name: 'heroImage',
       type: 'upload',
       relationTo: 'media',
@@ -238,54 +229,7 @@ export const Services: CollectionConfig = {
         description: 'Що таке, для кого, які завдання вирішує',
       },
     },
-    {
-      name: 'whatIncluded',
-      type: 'richText',
-      localized: true,
-      label: 'Що входить в послугу',
-      admin: {
-        description: 'Детальний список що входить в послугу',
-      },
-    },
-    {
-      name: 'process',
-      type: 'array',
-      label: 'Етапи роботи',
-      localized: true,
-      fields: [
-        {
-          name: 'stepNumber',
-          type: 'text',
-          label: 'Номер етапу',
-          admin: {
-            description: 'Наприклад: "01", "02"',
-          },
-        },
-        {
-          name: 'stepTitle',
-          type: 'text',
-          label: 'Назва етапу',
-          admin: {
-            description: 'Наприклад: "Аналіз і планування"',
-          },
-        },
-        {
-          name: 'stepDescription',
-          type: 'textarea',
-          label: 'Опис етапу',
-        },
-      ],
-    },
-    {
-      name: 'comparisonTable',
-      type: 'richText',
-      localized: true,
-      label: 'Порівняльна таблиця',
-      admin: {
-        description: 'Порівняння Weblium vs Custom',
-      },
-    },
-    
+
     // ============ ЗВ\'ЯЗКИ ============
     {
       name: 'relatedPortfolioProjects',
@@ -330,49 +274,7 @@ export const Services: CollectionConfig = {
       ],
     },
     
-    // ============ ДОДАТКОВІ ПОЛЯ ============
-    {
-      name: 'technologies',
-      type: 'array',
-      label: 'Технології',
-      fields: [
-        {
-          name: 'tech',
-          type: 'text',
-          label: 'Технологія',
-        },
-      ],
-      admin: {
-        description: 'Технології які використовуються в послузі',
-      },
-    },
-    {
-      name: 'benefits',
-      type: 'array',
-      label: 'Переваги',
-      localized: true,
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          label: 'Заголовок переваги',
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          label: 'Опис переваги',
-        },
-        {
-          name: 'icon',
-          type: 'text',
-          label: 'Іконка',
-          admin: {
-            description: 'Назва іконки або emoji',
-          },
-        },
-      ],
-    },
-    
+
     // ============ SEO ============
     {
       name: 'seo',
@@ -400,15 +302,6 @@ export const Services: CollectionConfig = {
           required: true,
           localized: true,
           label: 'Meta Keywords',
-        },
-        {
-          name: 'ogImage',
-          type: 'upload',
-          relationTo: 'media',
-          label: 'OG Image',
-          admin: {
-            description: 'Зображення для соціальних мереж',
-          },
         },
       ],
     },

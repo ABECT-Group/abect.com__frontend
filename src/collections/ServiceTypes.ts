@@ -50,32 +50,6 @@ export const ServiceTypes: CollectionConfig = {
       },
     },
     {
-      name: 'icon',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Іконка',
-      admin: {
-        description: 'Іконка для відображення в фільтрі',
-      },
-    },
-    {
-      name: 'cover',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Обкладинка',
-      admin: {
-        description: 'Зображення для OG та заголовка сторінки',
-      },
-    },
-    {
-      name: 'color',
-      type: 'text',
-      label: 'Колір (hex)',
-      admin: {
-        description: 'Акцентний колір для категорії, наприклад: #3B82F6',
-      },
-    },
-    {
       name: 'order',
       type: 'number',
       label: 'Порядковий номер',

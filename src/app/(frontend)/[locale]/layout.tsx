@@ -10,6 +10,7 @@ import StarsBackground from "@/client/components/StarsBackground/StarsBackground
 import CookieBanner from "@/client/components/CookieBanner";
 import Analytics from "@/client/components/Analytics/Analytics";
 import { ModalProvider } from "@/client/providers/ModalProvider";
+import { Metadata } from "next";
 
 import "./globals.scss";
 
@@ -17,6 +18,12 @@ const victorMono = Victor_Mono({
   variable: "--font-victor-mono",
   subsets: ["cyrillic", "latin"],
 });
+
+export const metadata: Metadata = {
+  verification: {
+    google: "ne6y1sQrac-nHCrsgVZ2t7svM3vh_B-PK7ZjaIhiahk",
+  },
+};
 
 export function generateStaticParams(): { locale: string }[] {
   return routing.locales.map((locale) => ({ locale }));
