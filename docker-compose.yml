@@ -4,11 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - DATABASE_URI
-        - PAYLOAD_SECRET
-        - NEXT_PUBLIC_SERVER_URL
+        PAYLOAD_SECRET: build-placeholder-secret-not-real
+        DATABASE_URI: mongodb://placeholder:placeholder@127.0.0.1:27017/placeholder?authSource=admin
     restart: unless-stopped
-    container_name: abect-app
+    container_name: agency-abect-frontend
     env_file:
       - ../.env.db
       - ../.env.frontend
@@ -23,6 +22,7 @@ services:
       - ./media:/app/media
     networks:
       - abect-shared
+      - mongodb-net
     deploy:
       resources:
         limits:
@@ -36,3 +36,6 @@ networks:
   abect-shared:
     external: true
     name: abect-shared
+  mongodb-net:
+    external: true
+    name: mongodb-net
