@@ -8,20 +8,20 @@ import type { Media } from '@/payload-types';
 export const dynamicParams = true;
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
-  try {
-    const { getPayload } = await import('payload');
-    const { default: config } = await import('@payload-config');
-    const payload = await getPayload({ config });
-    const { docs } = await payload.find({
-      collection: 'portfolio',
-      where: { status: { equals: 'published' } },
-      limit: 1000,
-      locale: params.locale as 'uk' | 'en',
-    });
-    return docs.filter(p => p.slug).map(p => ({ slug: p.slug }));
-  } catch {
-    return [];
-  }
+	try {
+		const { getPayload } = await import('payload');
+		const { default: config } = await import('@payload-config');
+		const payload = await getPayload({ config });
+		const { docs } = await payload.find({
+			collection: 'portfolio',
+			where: { status: { equals: 'published' } },
+			limit: 1000,
+			locale: params.locale as 'uk' | 'en',
+		});
+		return docs.filter(p => p.slug).map(p => ({ slug: p.slug }));
+	} catch {
+		return [];
+	}
 }
 
 type Params = {
@@ -44,27 +44,27 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 	}
 
 	const ogImage = project.seo.ogImage as Media | null;
-	const imageUrl = ogImage?.url || (locale === 'ua' ? 'https://abect.com/seo/portfolio-og.jpg' : 'https://abect.com/seo/en-portfolio-og.jpg');
+	const imageUrl = ogImage?.url || (locale === 'ua' ? 'https://agency.abect.com/seo/portfolio-og.jpg' : 'https://agency.abect.com/seo/en-portfolio-og.jpg');
 
 	const fullUrl =
 		locale === 'ua'
-			? `https://abect.com/portfolio/${slug}`
-			: `https://abect.com/${locale}/portfolio/${slug}`;
+			? `https://agency.abect.com/portfolio/${slug}`
+			: `https://agency.abect.com/${locale}/portfolio/${slug}`;
 
 	return {
 		title: project.seo.metaTitle,
 		description: project.seo.metaDescription,
 		keywords: project.seo.metaKeywords,
-		metadataBase: new URL('https://abect.com'),
+		metadataBase: new URL('https://agency.abect.com'),
 		alternates: {
 			canonical: fullUrl,
 			languages: {
-				'uk-UA': `https://abect.com/portfolio/${slug}`,
-				'en-US': `https://abect.com/en/portfolio/${slug}`,
-				'x-default': `https://abect.com/en/portfolio/${slug}`
+				'uk-UA': `https://agency.abect.com/portfolio/${slug}`,
+				'en-US': `https://agency.abect.com/en/portfolio/${slug}`,
+				'x-default': `https://agency.abect.com/en/portfolio/${slug}`
 			}
 		},
-		authors: [{ name: 'ABECT', url: 'https://abect.com' }],
+		authors: [{ name: 'ABECT', url: 'https://agency.abect.com' }],
 		robots: {
 			index: true,
 			follow: true,
@@ -134,25 +134,25 @@ export default async function ProjectPage({ params }: Params) {
 						'@type': 'CreativeWork',
 						headline: project.title,
 						description: project.shortDescription,
-						image: (project.seo.ogImage as Media | null)?.url || (locale === 'ua' ? 'https://abect.com/seo/portfolio-og.jpg' : 'https://abect.com/seo/en-portfolio-og.jpg'),
+						image: (project.seo.ogImage as Media | null)?.url || (locale === 'ua' ? 'https://agency.abect.com/seo/portfolio-og.jpg' : 'https://agency.abect.com/seo/en-portfolio-og.jpg'),
 						author: {
 							'@type': 'Organization',
 							name: 'ABECT',
-							url: 'https://abect.com'
+							url: 'https://agency.abect.com'
 						},
 						publisher: {
 							'@type': 'Organization',
 							name: 'ABECT',
 							logo: {
 								'@type': 'ImageObject',
-								url: 'https://abect.com/logo.png'
+								url: 'https://agency.abect.com/logo.png'
 							}
 						},
 						datePublished: project.projectDate,
 						dateModified: project.updatedAt,
 						url: locale === 'ua'
-							? `https://abect.com/portfolio/${slug}`
-							: `https://abect.com/${locale}/portfolio/${slug}`
+							? `https://agency.abect.com/portfolio/${slug}`
+							: `https://agency.abect.com/${locale}/portfolio/${slug}`
 					})
 				}}
 			/>
@@ -169,23 +169,23 @@ export default async function ProjectPage({ params }: Params) {
 								'@type': 'ListItem',
 								position: 1,
 								name: locale === 'ua' ? 'Головна' : 'Home',
-								item: 'https://abect.com'
+								item: 'https://agency.abect.com'
 							},
 							{
 								'@type': 'ListItem',
 								position: 2,
 								name: locale === 'ua' ? 'Портфоліо' : 'Portfolio',
 								item: locale === 'ua'
-									? 'https://abect.com/portfolio'
-									: `https://abect.com/${locale}/portfolio`
+									? 'https://agency.abect.com/portfolio'
+									: `https://agency.abect.com/${locale}/portfolio`
 							},
 							{
 								'@type': 'ListItem',
 								position: 3,
 								name: project.title,
 								item: locale === 'ua'
-									? `https://abect.com/portfolio/${slug}`
-									: `https://abect.com/${locale}/portfolio/${slug}`
+									? `https://agency.abect.com/portfolio/${slug}`
+									: `https://agency.abect.com/${locale}/portfolio/${slug}`
 							}
 						]
 					})

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
-const BASE_URL = 'https://abect.com'
+const BASE_URL = 'https://agency.abect.com'
 
 function url(path: string, locale: 'ua' | 'en'): string {
   const prefix = locale === 'en' ? '/en' : ''

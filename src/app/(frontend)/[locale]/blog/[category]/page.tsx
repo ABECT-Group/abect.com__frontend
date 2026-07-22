@@ -7,19 +7,19 @@ import type { Metadata } from 'next';
 export const dynamicParams = true;
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
-  try {
-    const { getPayload } = await import('payload');
-    const { default: config } = await import('@payload-config');
-    const payload = await getPayload({ config });
-    const { docs } = await payload.find({
-      collection: 'categories',
-      limit: 1000,
-      locale: params.locale as 'uk' | 'en',
-    });
-    return docs.filter(c => c.slug).map(c => ({ category: c.slug }));
-  } catch {
-    return [];
-  }
+	try {
+		const { getPayload } = await import('payload');
+		const { default: config } = await import('@payload-config');
+		const payload = await getPayload({ config });
+		const { docs } = await payload.find({
+			collection: 'categories',
+			limit: 1000,
+			locale: params.locale as 'uk' | 'en',
+		});
+		return docs.filter(c => c.slug).map(c => ({ category: c.slug }));
+	} catch {
+		return [];
+	}
 }
 
 type Params = {
@@ -45,27 +45,27 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 	const description = category.seo?.metaDescription || category.description;
 	const keywords = category.seo?.metaKeywords || category.name;
 
-	const imageUrl = locale === 'ua' ? 'https://abect.com/seo/og.jpg' : 'https://abect.com/seo/en-og.jpg';
+	const imageUrl = locale === 'ua' ? 'https://agency.abect.com/seo/og.jpg' : 'https://agency.abect.com/seo/en-og.jpg';
 
 	const fullUrl =
 		locale === 'ua'
-			? `https://abect.com/blog/${categorySlug}`
-			: `https://abect.com/${locale}/blog/${categorySlug}`;
+			? `https://agency.abect.com/blog/${categorySlug}`
+			: `https://agency.abect.com/${locale}/blog/${categorySlug}`;
 
 	return {
 		title,
 		description,
 		keywords,
-		metadataBase: new URL('https://abect.com'),
+		metadataBase: new URL('https://agency.abect.com'),
 		alternates: {
 			canonical: fullUrl,
 			languages: {
-				'uk-UA': `https://abect.com/blog/${categorySlug}`,
-				'en-US': `https://abect.com/en/blog/${categorySlug}`,
-				'x-default': `https://abect.com/en/blog/${categorySlug}`
+				'uk-UA': `https://agency.abect.com/blog/${categorySlug}`,
+				'en-US': `https://agency.abect.com/en/blog/${categorySlug}`,
+				'x-default': `https://agency.abect.com/en/blog/${categorySlug}`
 			}
 		},
-		authors: [{ name: 'ABECT', url: 'https://abect.com' }],
+		authors: [{ name: 'ABECT', url: 'https://agency.abect.com' }],
 		robots: {
 			index: true,
 			follow: true,
@@ -137,14 +137,14 @@ export default async function CategoryPage({ params }: Params) {
 						name: category.name,
 						description: category.description,
 						url: locale === 'ua'
-							? `https://abect.com/blog/${categorySlug}`
-							: `https://abect.com/${locale}/blog/${categorySlug}`,
+							? `https://agency.abect.com/blog/${categorySlug}`
+							: `https://agency.abect.com/${locale}/blog/${categorySlug}`,
 						isPartOf: {
 							'@type': 'Blog',
 							name: 'ABECT Blog',
 							url: locale === 'ua'
-								? 'https://abect.com/blog'
-								: `https://abect.com/${locale}/blog`
+								? 'https://agency.abect.com/blog'
+								: `https://agency.abect.com/${locale}/blog`
 						},
 						numberOfItems: posts.length
 					})

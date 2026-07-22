@@ -8,28 +8,28 @@ import type { Media, ServiceType } from '@/payload-types';
 export const dynamicParams = true;
 
 export async function generateStaticParams({ params }: { params: { locale: string; type: string } }) {
-  try {
-    const { getPayload } = await import('payload');
-    const { default: config } = await import('@payload-config');
-    const payload = await getPayload({ config });
+	try {
+		const { getPayload } = await import('payload');
+		const { default: config } = await import('@payload-config');
+		const payload = await getPayload({ config });
 
-    const { docs: types } = await payload.find({
-      collection: 'service-types',
-      where: { slug: { equals: params.type } },
-      limit: 1,
-    });
-    if (types.length === 0) return [];
+		const { docs: types } = await payload.find({
+			collection: 'service-types',
+			where: { slug: { equals: params.type } },
+			limit: 1,
+		});
+		if (types.length === 0) return [];
 
-    const { docs } = await payload.find({
-      collection: 'services',
-      where: { status: { equals: 'published' }, serviceType: { equals: types[0].id } },
-      limit: 1000,
-      locale: params.locale as 'uk' | 'en',
-    });
-    return docs.filter(s => s.slug).map(s => ({ slug: s.slug }));
-  } catch {
-    return [];
-  }
+		const { docs } = await payload.find({
+			collection: 'services',
+			where: { status: { equals: 'published' }, serviceType: { equals: types[0].id } },
+			limit: 1000,
+			locale: params.locale as 'uk' | 'en',
+		});
+		return docs.filter(s => s.slug).map(s => ({ slug: s.slug }));
+	} catch {
+		return [];
+	}
 }
 
 type Params = {
@@ -53,27 +53,27 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 	}
 
 	const heroImage = service.heroImage as Media | null;
-	const imageUrl = heroImage?.url || (locale === 'ua' ? 'https://abect.com/seo/og.jpg' : 'https://abect.com/seo/en-og.jpg');
+	const imageUrl = heroImage?.url || (locale === 'ua' ? 'https://agency.abect.com/seo/og.jpg' : 'https://agency.abect.com/seo/en-og.jpg');
 
 	const fullUrl =
 		locale === 'ua'
-			? `https://abect.com/services/${typeSlug}/${slug}`
-			: `https://abect.com/${locale}/services/${typeSlug}/${slug}`;
+			? `https://agency.abect.com/services/${typeSlug}/${slug}`
+			: `https://agency.abect.com/${locale}/services/${typeSlug}/${slug}`;
 
 	return {
 		title: service.seo.metaTitle,
 		description: service.seo.metaDescription,
 		keywords: service.seo.metaKeywords,
-		metadataBase: new URL('https://abect.com'),
+		metadataBase: new URL('https://agency.abect.com'),
 		alternates: {
 			canonical: fullUrl,
 			languages: {
-				'uk-UA': `https://abect.com/services/${typeSlug}/${slug}`,
-				'en-US': `https://abect.com/en/services/${typeSlug}/${slug}`,
-				'x-default': `https://abect.com/en/services/${typeSlug}/${slug}`
+				'uk-UA': `https://agency.abect.com/services/${typeSlug}/${slug}`,
+				'en-US': `https://agency.abect.com/en/services/${typeSlug}/${slug}`,
+				'x-default': `https://agency.abect.com/en/services/${typeSlug}/${slug}`
 			}
 		},
-		authors: [{ name: 'ABECT', url: 'https://abect.com' }],
+		authors: [{ name: 'ABECT', url: 'https://agency.abect.com' }],
 		robots: {
 			index: true,
 			follow: true,
@@ -149,11 +149,11 @@ export default async function ServicePage({ params }: Params) {
 						'@type': 'Service',
 						name: service.title,
 						description: service.shortDescription,
-						image: (service.heroImage as Media | null)?.url || (locale === 'ua' ? 'https://abect.com/seo/og.jpg' : 'https://abect.com/seo/en-og.jpg'),
+						image: (service.heroImage as Media | null)?.url || (locale === 'ua' ? 'https://agency.abect.com/seo/og.jpg' : 'https://agency.abect.com/seo/en-og.jpg'),
 						provider: {
 							'@type': 'Organization',
 							name: 'ABECT',
-							url: 'https://abect.com'
+							url: 'https://agency.abect.com'
 						},
 						offers: [
 							service.hasWebliumOption && service.webliumPrice ? {
@@ -171,8 +171,8 @@ export default async function ServicePage({ params }: Params) {
 						].filter(Boolean),
 						category: serviceType.name,
 						url: locale === 'ua'
-							? `https://abect.com/services/${typeSlug}/${slug}`
-							: `https://abect.com/${locale}/services/${typeSlug}/${slug}`
+							? `https://agency.abect.com/services/${typeSlug}/${slug}`
+							: `https://agency.abect.com/${locale}/services/${typeSlug}/${slug}`
 					})
 				}}
 			/>
@@ -189,31 +189,31 @@ export default async function ServicePage({ params }: Params) {
 								'@type': 'ListItem',
 								position: 1,
 								name: locale === 'ua' ? 'Головна' : 'Home',
-								item: 'https://abect.com'
+								item: 'https://agency.abect.com'
 							},
 							{
 								'@type': 'ListItem',
 								position: 2,
 								name: locale === 'ua' ? 'Послуги' : 'Services',
 								item: locale === 'ua'
-									? 'https://abect.com/services'
-									: `https://abect.com/${locale}/services`
+									? 'https://agency.abect.com/services'
+									: `https://agency.abect.com/${locale}/services`
 							},
 							{
 								'@type': 'ListItem',
 								position: 3,
 								name: serviceType.name,
 								item: locale === 'ua'
-									? `https://abect.com/services/${typeSlug}`
-									: `https://abect.com/${locale}/services/${typeSlug}`
+									? `https://agency.abect.com/services/${typeSlug}`
+									: `https://agency.abect.com/${locale}/services/${typeSlug}`
 							},
 							{
 								'@type': 'ListItem',
 								position: 4,
 								name: service.title,
 								item: locale === 'ua'
-									? `https://abect.com/services/${typeSlug}/${slug}`
-									: `https://abect.com/${locale}/services/${typeSlug}/${slug}`
+									? `https://agency.abect.com/services/${typeSlug}/${slug}`
+									: `https://agency.abect.com/${locale}/services/${typeSlug}/${slug}`
 							}
 						]
 					})

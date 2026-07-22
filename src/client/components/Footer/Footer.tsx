@@ -28,8 +28,8 @@ export default function Footer() {
 	const contactInfo = [
 		{
 			icon: <Mail />,
-			href: 'mailto:support@abect.com',
-			text: 'support@abect.com',
+			href: 'mailto:support@agency.abect.com',
+			text: 'support@agency.abect.com',
 			type: 'email'
 		},
 		{

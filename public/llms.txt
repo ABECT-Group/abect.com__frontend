@@ -4,8 +4,8 @@ ABECT is a Ukrainian web development agency specializing in custom websites, lan
 
 ## Contact
 
-- Website: https://abect.com
-- Email: support@abect.com
+- Website: https://agency.abect.com
+- Email: support@agency.abect.com
 - Telegram: https://t.me/abect_agency
 - Phone: +380 98 027 5819
 
@@ -43,10 +43,10 @@ ABECT builds fast, SEO-optimized websites with clean code and no WordPress bloat
 
 ## Key Pages
 
-- Homepage: https://abect.com
-- Services: https://abect.com/services
-- Portfolio: https://abect.com/portfolio
-- Blog: https://abect.com/blog
-- Cost calculator: https://abect.com/calculator
-- Contacts: https://abect.com/contacts
-- Privacy Policy: https://abect.com/privacy-policy
+- Homepage: https://agency.abect.com
+- Services: https://agency.abect.com/services
+- Portfolio: https://agency.abect.com/portfolio
+- Blog: https://agency.abect.com/blog
+- Cost calculator: https://agency.abect.com/calculator
+- Contacts: https://agency.abect.com/contacts
+- Privacy Policy: https://agency.abect.com/privacy-policy

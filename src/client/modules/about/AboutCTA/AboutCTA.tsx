@@ -13,8 +13,8 @@ export default function AboutCTA(): JSX.Element {
 			<h2 className="about-cta__title">{t('cta.title')}</h2>
 			<p className="about-cta__text">{t('cta.text')}</p>
 			<div className="about-cta__contacts">
-				<a href="mailto:support@abect.com" className="about-cta__link">
-					support@abect.com
+				<a href="mailto:support@agency.abect.com" className="about-cta__link">
+					support@agency.abect.com
 				</a>
 				<a href="https://t.me/+380980275819" className="about-cta__link">
 					<Send size={18} />

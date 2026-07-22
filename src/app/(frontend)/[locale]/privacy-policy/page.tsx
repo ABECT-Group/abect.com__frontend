@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const description = isUa
     ? 'Політика конфіденційності веб-студії ABECT. Які дані ми збираємо, як їх використовуємо та зберігаємо.'
     : 'Privacy Policy of ABECT web studio. What data we collect, how we use and store it.';
-  const fullUrl = isUa ? 'https://abect.com/privacy-policy' : 'https://abect.com/en/privacy-policy';
+  const fullUrl = isUa ? 'https://agency.abect.com/privacy-policy' : 'https://agency.abect.com/en/privacy-policy';
 
   return {
     title,
@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     alternates: {
       canonical: fullUrl,
       languages: {
-        'uk-UA': 'https://abect.com/privacy-policy',
-        'en-US': 'https://abect.com/en/privacy-policy',
-        'x-default': 'https://abect.com/en/privacy-policy',
+        'uk-UA': 'https://agency.abect.com/privacy-policy',
+        'en-US': 'https://agency.abect.com/en/privacy-policy',
+        'x-default': 'https://agency.abect.com/en/privacy-policy',
       },
     },
     openGraph: {
@@ -76,7 +76,7 @@ function ContentUA() {
         <h2>1. Хто ми</h2>
         <p>
           ABECT — українська веб-студія. Адреса електронної пошти:{' '}
-          <a href="mailto:support@abect.com">support@abect.com</a>. Ми є контролером персональних
+          <a href="mailto:support@agency.abect.com">support@agency.abect.com</a>. Ми є контролером персональних
           даних, які ви надаєте через наш сайт.
         </p>
       </section>
@@ -119,7 +119,7 @@ function ContentUA() {
           Ми зберігаємо ваші дані протягом невизначеного терміну — доки менеджер вважає їх
           актуальними для ведення бізнесу. Ви маєте право в будь-який момент запросити видалення
           своїх даних, надіславши запит на{' '}
-          <a href="mailto:support@abect.com">support@abect.com</a>.
+          <a href="mailto:support@agency.abect.com">support@agency.abect.com</a>.
         </p>
       </section>
 
@@ -178,7 +178,7 @@ function ContentUA() {
           <li>Перенести дані.</li>
         </ul>
         <p>
-          Для реалізації прав звертайтесь: <a href="mailto:support@abect.com">support@abect.com</a>.
+          Для реалізації прав звертайтесь: <a href="mailto:support@agency.abect.com">support@agency.abect.com</a>.
           Ми відповімо протягом 30 днів.
         </p>
       </section>
@@ -195,7 +195,7 @@ function ContentUA() {
         <h2>10. Контакти</h2>
         <p>
           З питань конфіденційності:{' '}
-          <a href="mailto:support@abect.com">support@abect.com</a>
+          <a href="mailto:support@agency.abect.com">support@agency.abect.com</a>
           <br />
           Telegram: <a href="https://t.me/+380980275819" target="_blank" rel="noopener noreferrer">+380 98 027 5819</a>
         </p>
@@ -215,7 +215,7 @@ function ContentEN() {
         <h2>1. Who We Are</h2>
         <p>
           ABECT is a Ukrainian web studio. Email:{' '}
-          <a href="mailto:support@abect.com">support@abect.com</a>. We are the data controller for
+          <a href="mailto:support@agency.abect.com">support@agency.abect.com</a>. We are the data controller for
           personal data you provide through our website.
         </p>
       </section>
@@ -257,7 +257,7 @@ function ContentEN() {
         <p>
           We store your data for an indefinite period — as long as our manager considers it relevant
           for business operations. You can request deletion at any time by emailing{' '}
-          <a href="mailto:support@abect.com">support@abect.com</a>.
+          <a href="mailto:support@agency.abect.com">support@agency.abect.com</a>.
         </p>
       </section>
 
@@ -317,7 +317,7 @@ function ContentEN() {
         </ul>
         <p>
           To exercise these rights, contact us at{' '}
-          <a href="mailto:support@abect.com">support@abect.com</a>. We will respond within 30 days.
+          <a href="mailto:support@agency.abect.com">support@agency.abect.com</a>. We will respond within 30 days.
         </p>
       </section>
 
@@ -333,7 +333,7 @@ function ContentEN() {
         <h2>10. Contact</h2>
         <p>
           Privacy questions:{' '}
-          <a href="mailto:support@abect.com">support@abect.com</a>
+          <a href="mailto:support@agency.abect.com">support@agency.abect.com</a>
           <br />
           Telegram:{' '}
           <a href="https://t.me/+380980275819" target="_blank" rel="noopener noreferrer">+380 98 027 5819</a>

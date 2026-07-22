@@ -8,28 +8,28 @@ import type { Media, User, Category } from '@/payload-types';
 export const dynamicParams = true;
 
 export async function generateStaticParams({ params }: { params: { locale: string; category: string } }) {
-  try {
-    const { getPayload } = await import('payload');
-    const { default: config } = await import('@payload-config');
-    const payload = await getPayload({ config });
+	try {
+		const { getPayload } = await import('payload');
+		const { default: config } = await import('@payload-config');
+		const payload = await getPayload({ config });
 
-    const { docs: cats } = await payload.find({
-      collection: 'categories',
-      where: { slug: { equals: params.category } },
-      limit: 1,
-    });
-    if (cats.length === 0) return [];
+		const { docs: cats } = await payload.find({
+			collection: 'categories',
+			where: { slug: { equals: params.category } },
+			limit: 1,
+		});
+		if (cats.length === 0) return [];
 
-    const { docs } = await payload.find({
-      collection: 'posts',
-      where: { status: { equals: 'published' }, category: { equals: cats[0].id } },
-      limit: 1000,
-      locale: params.locale as 'uk' | 'en',
-    });
-    return docs.filter(p => p.slug).map(p => ({ slug: p.slug }));
-  } catch {
-    return [];
-  }
+		const { docs } = await payload.find({
+			collection: 'posts',
+			where: { status: { equals: 'published' }, category: { equals: cats[0].id } },
+			limit: 1000,
+			locale: params.locale as 'uk' | 'en',
+		});
+		return docs.filter(p => p.slug).map(p => ({ slug: p.slug }));
+	} catch {
+		return [];
+	}
 }
 
 type Params = {
@@ -53,15 +53,15 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 	}
 
 	const cover = post.cover as Media | null;
-	const imageUrl = cover?.url || (locale === 'ua' ? 'https://abect.com/seo/blog-og.jpg' : 'https://abect.com/seo/en-blog-og.jpg');
+	const imageUrl = cover?.url || (locale === 'ua' ? 'https://agency.abect.com/seo/blog-og.jpg' : 'https://agency.abect.com/seo/en-blog-og.jpg');
 
 	const category = post.category as Category | null;
 	const categorySlug = category?.slug || 'uncategorized';
 
 	const fullUrl =
 		locale === 'ua'
-			? `https://abect.com/blog/${categorySlug}/${slug}`
-			: `https://abect.com/${locale}/blog/${categorySlug}/${slug}`;
+			? `https://agency.abect.com/blog/${categorySlug}/${slug}`
+			: `https://agency.abect.com/${locale}/blog/${categorySlug}/${slug}`;
 
 	const author = post.author as User | null;
 	const authorName = author ? `${author.firstName} ${author.lastName}` : 'ABECT';
@@ -70,16 +70,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 		title: post.seo.metaTitle,
 		description: post.seo.metaDescription,
 		keywords: post.seo.metaKeywords,
-		metadataBase: new URL('https://abect.com'),
+		metadataBase: new URL('https://agency.abect.com'),
 		alternates: {
 			canonical: fullUrl,
 			languages: {
-				'uk-UA': `https://abect.com/blog/${categorySlug}/${slug}`,
-				'en-US': `https://abect.com/en/blog/${categorySlug}/${slug}`,
-				'x-default': `https://abect.com/en/blog/${categorySlug}/${slug}`
+				'uk-UA': `https://agency.abect.com/blog/${categorySlug}/${slug}`,
+				'en-US': `https://agency.abect.com/en/blog/${categorySlug}/${slug}`,
+				'x-default': `https://agency.abect.com/en/blog/${categorySlug}/${slug}`
 			}
 		},
-		authors: [{ name: authorName, url: 'https://abect.com' }],
+		authors: [{ name: authorName, url: 'https://agency.abect.com' }],
 		robots: {
 			index: true,
 			follow: true,
@@ -169,7 +169,7 @@ export default async function ArticlePage({ params }: Params) {
 						'@type': 'BlogPosting',
 						headline: post.title,
 						description: post.description,
-						image: cover?.url || (locale === 'ua' ? 'https://abect.com/seo/blog-og.jpg' : 'https://abect.com/seo/en-blog-og.jpg'),
+						image: cover?.url || (locale === 'ua' ? 'https://agency.abect.com/seo/blog-og.jpg' : 'https://agency.abect.com/seo/en-blog-og.jpg'),
 						author: {
 							'@type': 'Person',
 							name: authorName
@@ -179,14 +179,14 @@ export default async function ArticlePage({ params }: Params) {
 							name: 'ABECT',
 							logo: {
 								'@type': 'ImageObject',
-								url: 'https://abect.com/logo.png'
+								url: 'https://agency.abect.com/logo.png'
 							}
 						},
 						datePublished: post.date,
 						dateModified: post.updatedAt,
 						url: locale === 'ua'
-							? `https://abect.com/blog/${categorySlug}/${slug}`
-							: `https://abect.com/${locale}/blog/${categorySlug}/${slug}`,
+							? `https://agency.abect.com/blog/${categorySlug}/${slug}`
+							: `https://agency.abect.com/${locale}/blog/${categorySlug}/${slug}`,
 						articleSection: category?.name,
 						keywords: category?.name,
 						wordCount: post.readTime * 200,
@@ -207,31 +207,31 @@ export default async function ArticlePage({ params }: Params) {
 								'@type': 'ListItem',
 								position: 1,
 								name: locale === 'ua' ? 'Головна' : 'Home',
-								item: 'https://abect.com'
+								item: 'https://agency.abect.com'
 							},
 							{
 								'@type': 'ListItem',
 								position: 2,
 								name: locale === 'ua' ? 'Блог' : 'Blog',
 								item: locale === 'ua'
-									? 'https://abect.com/blog'
-									: `https://abect.com/${locale}/blog`
+									? 'https://agency.abect.com/blog'
+									: `https://agency.abect.com/${locale}/blog`
 							},
 							{
 								'@type': 'ListItem',
 								position: 3,
 								name: category?.name || 'Category',
 								item: locale === 'ua'
-									? `https://abect.com/blog/${categorySlug}`
-									: `https://abect.com/${locale}/blog/${categorySlug}`
+									? `https://agency.abect.com/blog/${categorySlug}`
+									: `https://agency.abect.com/${locale}/blog/${categorySlug}`
 							},
 							{
 								'@type': 'ListItem',
 								position: 4,
 								name: post.title,
 								item: locale === 'ua'
-									? `https://abect.com/blog/${categorySlug}/${slug}`
-									: `https://abect.com/${locale}/blog/${categorySlug}/${slug}`
+									? `https://agency.abect.com/blog/${categorySlug}/${slug}`
+									: `https://agency.abect.com/${locale}/blog/${categorySlug}/${slug}`
 							}
 						]
 					})

@@ -15,6 +15,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'PerplexityBot', allow: '/' },
       { userAgent: 'Google-Extended', allow: '/' },
     ],
-    sitemap: 'https://abect.com/sitemap.xml',
+    sitemap: 'https://agency.abect.com/sitemap.xml',
   }
 }

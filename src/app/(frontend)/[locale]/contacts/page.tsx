@@ -27,23 +27,23 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 	const fullUrl =
 		locale === 'ua'
-			? 'https://abect.com/contacts'
-			: `https://abect.com/${locale}/contacts`;
+			? 'https://agency.abect.com/contacts'
+			: `https://agency.abect.com/${locale}/contacts`;
 
 	return {
 		title,
 		description,
 		keywords,
-		metadataBase: new URL('https://abect.com'),
+		metadataBase: new URL('https://agency.abect.com'),
 		alternates: {
 			canonical: fullUrl,
 			languages: {
-				'uk-UA': 'https://abect.com/contacts',
-				'en-US': 'https://abect.com/en/contacts',
-				'x-default': 'https://abect.com/en/contacts'
+				'uk-UA': 'https://agency.abect.com/contacts',
+				'en-US': 'https://agency.abect.com/en/contacts',
+				'x-default': 'https://agency.abect.com/en/contacts'
 			}
 		},
-		authors: [{ name: 'ABECT', url: 'https://abect.com' }],
+		authors: [{ name: 'ABECT', url: 'https://agency.abect.com' }],
 		robots: {
 			index: true,
 			follow: true,
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 			siteName: 'ABECT',
 			images: [
 				{
-					url: locale === 'ua' ? 'https://abect.com/seo/contacts-og.jpg' : 'https://abect.com/seo/en-contacts-og.jpg',
+					url: locale === 'ua' ? 'https://agency.abect.com/seo/contacts-og.jpg' : 'https://agency.abect.com/seo/en-contacts-og.jpg',
 					width: 1200,
 					height: 630,
 					alt: title
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 			card: 'summary_large_image',
 			title,
 			description,
-			images: [locale === 'ua' ? 'https://abect.com/seo/contacts-og.jpg' : 'https://abect.com/seo/en-contacts-og.jpg']
+			images: [locale === 'ua' ? 'https://agency.abect.com/seo/contacts-og.jpg' : 'https://agency.abect.com/seo/en-contacts-og.jpg']
 		},
 		icons: {
 			icon: [
@@ -89,12 +89,12 @@ export default async function ContactsServerPage({ params }: Params) {
 
 	setRequestLocale(locale);
 
-	const pageUrl = locale === 'ua' ? 'https://abect.com/contacts' : 'https://abect.com/en/contacts';
+	const pageUrl = locale === 'ua' ? 'https://agency.abect.com/contacts' : 'https://agency.abect.com/en/contacts';
 	const breadcrumbJsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'BreadcrumbList',
 		itemListElement: [
-			{ '@type': 'ListItem', position: 1, name: locale === 'ua' ? 'Головна' : 'Home', item: 'https://abect.com' },
+			{ '@type': 'ListItem', position: 1, name: locale === 'ua' ? 'Головна' : 'Home', item: 'https://agency.abect.com' },
 			{ '@type': 'ListItem', position: 2, name: locale === 'ua' ? 'Контакти' : 'Contacts', item: pageUrl },
 		],
 	};

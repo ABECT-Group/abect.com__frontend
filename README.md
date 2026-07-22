@@ -81,7 +81,7 @@ npm run seed:services:extra  # Seed додаткових послуг
 
 Інструкція деплою: [`../docs/VPS.md`](../docs/VPS.md)
 
-Nginx конфіг: [`../docs/abect.com.conf`](../docs/abect.com.conf)
+Nginx конфіг: [`../docs/agency.abect.com.conf`](../docs/agency.abect.com.conf)
 
 ### Швидкий редеплой
 
@@ -135,7 +135,7 @@ DATABASE_URI=mongodb://user:password@abect-mongo:27017/abect?authSource=admin
 **`.env.frontend`**
 ```
 PAYLOAD_SECRET=
-NEXT_PUBLIC_SERVER_URL=https://abect.com
+NEXT_PUBLIC_SERVER_URL=https://agency.abect.com
 TELEGRAM_BOT_TOKEN=
 TELEGRAM_CHAT_ID=
 TELEGRAM_THREAD_ID=

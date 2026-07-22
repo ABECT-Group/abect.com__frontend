@@ -27,23 +27,23 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   const fullUrl =
     locale === 'ua'
-      ? 'https://abect.com/calculator'
-      : `https://abect.com/${locale}/calculator`;
+      ? 'https://agency.abect.com/calculator'
+      : `https://agency.abect.com/${locale}/calculator`;
 
   return {
     title,
     description,
     keywords,
-    metadataBase: new URL('https://abect.com'),
+    metadataBase: new URL('https://agency.abect.com'),
     alternates: {
       canonical: fullUrl,
       languages: {
-        'uk-UA': 'https://abect.com/calculator',
-        'en-US': 'https://abect.com/en/calculator',
-        'x-default': 'https://abect.com/en/calculator',
+        'uk-UA': 'https://agency.abect.com/calculator',
+        'en-US': 'https://agency.abect.com/en/calculator',
+        'x-default': 'https://agency.abect.com/en/calculator',
       },
     },
-    authors: [{ name: 'ABECT', url: 'https://abect.com' }],
+    authors: [{ name: 'ABECT', url: 'https://agency.abect.com' }],
     robots: {
       index: true,
       follow: true,
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       siteName: 'ABECT',
       images: [
         {
-          url: locale === 'ua' ? 'https://abect.com/seo/calculator-og.jpg' : 'https://abect.com/seo/en-calculator-og.jpg',
+          url: locale === 'ua' ? 'https://agency.abect.com/seo/calculator-og.jpg' : 'https://agency.abect.com/seo/en-calculator-og.jpg',
           width: 1200,
           height: 630,
           alt: title,
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: [locale === 'ua' ? 'https://abect.com/seo/calculator-og.jpg' : 'https://abect.com/seo/en-calculator-og.jpg'],
+      images: [locale === 'ua' ? 'https://agency.abect.com/seo/calculator-og.jpg' : 'https://agency.abect.com/seo/en-calculator-og.jpg'],
     },
     icons: {
       icon: [
@@ -148,8 +148,8 @@ export default async function CalculatorPage({ params }: Params) {
                 : 'Online calculator for estimating website development cost',
             url:
               locale === 'ua'
-                ? 'https://abect.com/calculator'
-                : `https://abect.com/${locale}/calculator`,
+                ? 'https://agency.abect.com/calculator'
+                : `https://agency.abect.com/${locale}/calculator`,
             applicationCategory: 'BusinessApplication',
             operatingSystem: 'Any',
             offers: {
@@ -161,7 +161,7 @@ export default async function CalculatorPage({ params }: Params) {
             provider: {
               '@type': 'Organization',
               name: 'ABECT',
-              url: 'https://abect.com',
+              url: 'https://agency.abect.com',
             },
           }),
         }}
@@ -179,7 +179,7 @@ export default async function CalculatorPage({ params }: Params) {
                 '@type': 'ListItem',
                 position: 1,
                 name: locale === 'ua' ? 'Головна' : 'Home',
-                item: 'https://abect.com',
+                item: 'https://agency.abect.com',
               },
               {
                 '@type': 'ListItem',
@@ -187,8 +187,8 @@ export default async function CalculatorPage({ params }: Params) {
                 name: locale === 'ua' ? 'Калькулятор' : 'Calculator',
                 item:
                   locale === 'ua'
-                    ? 'https://abect.com/calculator'
-                    : `https://abect.com/${locale}/calculator`,
+                    ? 'https://agency.abect.com/calculator'
+                    : `https://agency.abect.com/${locale}/calculator`,
               },
             ],
           }),

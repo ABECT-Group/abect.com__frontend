@@ -32,8 +32,8 @@ export default function ContactsPage({ locale }: ContactsPageProps): JSX.Element
 		{
 			icon: <Mail size={28} />,
 			label: t('email'),
-			value: 'support@abect.com',
-			href: 'mailto:support@abect.com',
+			value: 'support@agency.abect.com',
+			href: 'mailto:support@agency.abect.com',
 			type: 'email'
 		},
 		{

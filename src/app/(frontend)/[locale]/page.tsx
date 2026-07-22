@@ -30,22 +30,22 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 		? 'сайт, Next.js, розробка сайтів, створення сайтів, веб-дизайн, SEO оптимізація, бізнес сайт, корпоративний сайт, інтернет-магазин, landing page, WordPress, React'
 		: 'website, Next.js, web development, website creation, web design, SEO optimization, business website, corporate website, online store, landing page, WordPress, React';
 
-	const fullUrl = locale === "ua" ? `https://abect.com` : `https://abect.com/${locale}`;
-	const ogImage = locale === 'ua' ? 'https://abect.com/seo/og.jpg' : 'https://abect.com/seo/en-og.jpg';
+	const fullUrl = locale === "ua" ? `https://agency.abect.com` : `https://agency.abect.com/${locale}`;
+	const ogImage = locale === 'ua' ? 'https://agency.abect.com/seo/og.jpg' : 'https://agency.abect.com/seo/en-og.jpg';
 
 	return {
 		title,
 		description,
-		metadataBase: new URL('https://abect.com'),
+		metadataBase: new URL('https://agency.abect.com'),
 		alternates: {
 			canonical: fullUrl,
 			languages: {
-				'uk-UA': 'https://abect.com',
-				'en-US': 'https://abect.com/en',
-				'x-default': 'https://abect.com/en',
+				'uk-UA': 'https://agency.abect.com',
+				'en-US': 'https://agency.abect.com/en',
+				'x-default': 'https://agency.abect.com/en',
 			},
 		},
-		authors: [{ name: 'Abect', url: 'https://abect.com' }],
+		authors: [{ name: 'Abect', url: 'https://agency.abect.com' }],
 		robots: {
 			index: true,
 			follow: true,
@@ -93,9 +93,9 @@ export default async function HomePage({ params }: Params) {
 		'@context': 'https://schema.org',
 		'@type': ['Organization', 'ProfessionalService'],
 		name: 'ABECT',
-		url: 'https://abect.com',
-		logo: 'https://abect.com/seo/og.jpg',
-		email: 'support@abect.com',
+		url: 'https://agency.abect.com',
+		logo: 'https://agency.abect.com/seo/og.jpg',
+		email: 'support@agency.abect.com',
 		telephone: '+380980275819',
 		priceRange: '₴₴',
 		serviceType: 'Web Development',
@@ -114,7 +114,7 @@ export default async function HomePage({ params }: Params) {
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
 		name: 'ABECT',
-		url: 'https://abect.com',
+		url: 'https://agency.abect.com',
 		description: isUa
 			? 'Професійна розробка сайтів для бізнесу'
 			: 'Professional website development for business',
